@@ -1,0 +1,13 @@
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if category == "error" %}
+        <div class="container mx-auto m-2 p-5 bg-rose-400 rounded-3xl shadow-md text-center">
+          <h2>{{message}}</h2>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock %}

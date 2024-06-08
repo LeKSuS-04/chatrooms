@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %} Room {{room_id}}{% endblock %}
+
+{% block head %}
+<script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container mx-auto m-10 p-5 bg-cyan-200 rounded-3xl shadow-md text-center">
+  <div class="mx-auto w-96 flex flex-col">
+    {% for message in messages %}
+      <div class="rounded-md bg-white p-5 m-1 text-left flex flex-col">
+        {% if message.image_file %}
+        <img class="uploaded-image mb-3" src="/uploads/{{message.image_file}}">
+        {% endif %}
+        <p>{{message.message}}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <form method="POST" enctype="multipart/form-data" class="w-96 mt-10 flex flex-col gap-3 mx-auto">
+    <textarea name="message" type="text" placeholder="Enter message..." class="px-3 py-2 w-full rounded-md"></textarea>
+    <input type="file" name="file" class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-cyan-500 file:text-white hover:file:bg-cyan-700 hover:file:cursor-pointer">
+    <div
+        id="captcha-container"
+        class="smart-captcha"
+        data-sitekey="ysc1_KcGU2G2DD5rcTk4fri3e0rPORS8w8dbo79AvhYQz65f7abae"
+    >
+      <input type="hidden" name="smart-token" value="">
+    </div>
+    <button class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-3 rounded-md">Send message</button>
+  </form>
+</div>
+
+<div id="fullscreen-container" class="fixed top-0 right-0 bottom-0 left-0 bg-white/50 hidden flex items-center justify-center">
+  <img id="fullscreen-image" class="object-contain" />
+</div>
+
+<script>
+  const images = document.querySelectorAll('.uploaded-image');
+
+  const fullscreenContainer = document.getElementById('fullscreen-container');
+  const fullscreenImage = document.getElementById('fullscreen-image');
+  const closeButton = document.getElementById('close-fullscreen');
+
+  for (const img of images) {
+    img.addEventListener('click', () => {
+      const src = img.src;
+      const alt = img.alt;
+
+      fullscreenImage.src = src;
+      fullscreenImage.alt = alt;
+
+      fullscreenContainer.style.display = 'flex';
+    });
+  }
+
+  fullscreenContainer.onclick = () => {
+    fullscreenContainer.style.display = 'none';
+  };
+</script>
+{% endblock %}

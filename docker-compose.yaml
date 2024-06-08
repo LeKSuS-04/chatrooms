@@ -1,0 +1,33 @@
+services:
+  cheatrooms:
+    build: .
+    restart: unless-stopped
+    expose:
+      - 80
+    volumes:
+      - ./data:/data
+    env_file:
+      - .envrc
+    environment:
+      - UPLOAD_FOLDER=/data/uploads
+      - DB_PATH=/data/rooms.db
+    networks:
+      - cheatrooms-network
+
+  caddy:
+    image: caddy:2.8
+    restart: unless-stopped
+    cap_add: [NET_ADMIN]
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    volumes:
+      - /data
+      - /config
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - cheatrooms-network
+
+networks:
+  cheatrooms-network:

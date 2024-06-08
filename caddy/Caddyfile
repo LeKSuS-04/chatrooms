@@ -1,0 +1,6 @@
+dev.leksus.net {
+    reverse_proxy {
+        to cheatrooms:80
+        header_down +Access-Control-Allow-Origin "*"
+    }
+}

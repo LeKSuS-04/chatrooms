@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container mx-auto m-10 p-5 bg-cyan-200 rounded-3xl shadow-md text-center">
+  <form method="POST" action="/" class="w-96 flex flex-col gap-3 mx-auto">
+    <input name="room-id" type="text" minlength="5" placeholder="room id" class="px-3 py-2 w-full rounded-md">
+    <div
+        id="captcha-container"
+        class="smart-captcha"
+        data-sitekey="ysc1_KcGU2G2DD5rcTk4fri3e0rPORS8w8dbo79AvhYQz65f7abae"
+    >
+      <input type="hidden" name="smart-token" value="">
+    </div>
+    <button class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-3 rounded-md">Create room</button>
+  </form>
+</div>
+{% endblock %}

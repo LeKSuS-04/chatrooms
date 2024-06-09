@@ -14,6 +14,7 @@ class Message:
 class RoomExistsException(ValueError):
     ...
 
+
 class RoomDoesNotExistException(ValueError):
     ...
 

@@ -1,4 +1,4 @@
-dev.leksus.net {
+rooms.leksus.net {
     reverse_proxy {
         to chatrooms:80
         header_down +Access-Control-Allow-Origin "*"

@@ -16,7 +16,7 @@
 (function() {
   'use strict';
 
-  const chatRoomsBackend = "https://dev.leksus.net";
+  const chatRoomsBackend = "https://rooms.leksus.net";
 
   const jqueryUiCss = GM_getResourceText("JQUERY_UI_CSS");
   GM_addStyle(jqueryUiCss);

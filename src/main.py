@@ -50,7 +50,10 @@ def abort(message: str):
 
 @app.get('/')
 def index():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        smartcaptcha_client_key=env.SMARTCAPTCHA_CLIENT_KEY,
+    )
 
 
 @app.errorhandler(404)
@@ -85,7 +88,12 @@ def get_room(room_id: str):
     except db.RoomDoesNotExistException:
         return render_template("404.html"), 404
     else:
-        return render_template('room.html', room_id=room_id, messages=messages)
+        return render_template(
+            'room.html',
+            room_id=room_id,
+            messages=messages,
+            smartcaptcha_client_key=env.SMARTCAPTCHA_CLIENT_KEY,
+        )
 
 
 @app.post('/room/<room_id>')

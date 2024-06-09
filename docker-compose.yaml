@@ -1,5 +1,5 @@
 services:
-  cheatrooms:
+  chatrooms:
     build: .
     restart: unless-stopped
     expose:
@@ -12,7 +12,7 @@ services:
       - UPLOAD_FOLDER=/data/uploads
       - DB_PATH=/data/rooms.db
     networks:
-      - cheatrooms-network
+      - chatrooms-network
 
   caddy:
     image: caddy:2.8
@@ -27,7 +27,7 @@ services:
       - /config
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
     networks:
-      - cheatrooms-network
+      - chatrooms-network
 
 networks:
-  cheatrooms-network:
+  chatrooms-network:

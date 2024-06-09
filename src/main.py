@@ -14,6 +14,7 @@ import fileutil
 db.init()
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 
 
 def require_captcha(f):

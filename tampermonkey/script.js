@@ -33,7 +33,7 @@
   container.style.padding = '20px';
   container.style.visibility = "visible";
   container.style.borderRadius = '10px';
-  container.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+  container.style.boxShadow = '0 0 2px rgba(0, 0, 0, 0.3)';
 
   const dragHandle = document.createElement('div');
   dragHandle.id = 'draggable-handle';
@@ -63,8 +63,16 @@
   bottomRow.style.alignItems = 'center';
   bottomRow.style.padding = '10px';
 
+  let page = 0;
+  const updatePage = (updater) => {
+      page = messages.length === 0 ? 0 : (updater(page) + messages.length) % messages.length;
+      saveState();
+      updateUI();
+  }
   const pageCounter = document.createElement('p');
+  pageCounter.style.userSelect = "none";
   pageCounter.textContent = "0/0";
+  pageCounter.onclick = () => updatePage(p => p + 1);
 
   const opacitySlider = document.createElement('input');
   opacitySlider.type = 'range';
@@ -79,7 +87,6 @@
   };
 
   let roomId = "";
-  let page = 0;
   let scrollToLastPage = true;
   let messages = [];
   const roomIdInput = document.createElement('input');
@@ -205,15 +212,11 @@
               break;
 
           case "ArrowLeft":
-              page = messages.length === 0 ? 0 : (page - 1 + messages.length) % messages.length;
-              saveState();
-              updateUI();
+              updatePage(p => p - 1);
               break;
 
           case "ArrowRight":
-              page = messages.length === 0 ? 0 : (page + 1) % messages.length;
-              saveState();
-              updateUI();
+              updatePage(p => p + 1);
               break;
 
           case "f":

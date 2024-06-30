@@ -49,14 +49,14 @@
   const img = document.createElement("img");
   img.src = "https://imgs.xkcd.com/comics/automation.png";
   img.style.maxWidth = "100%";
-  img.style.maxHeight = "90%";
+  img.style.maxHeight = "calc(100% - 3em)";
   img.style.objectFit = "scale-down";
 
   const description = document.createElement("p");
   description.textContent = "xkcd 1319, Automation";
 
   const content = document.createElement("div");
-  content.style.maxHeight = "85%";
+  content.style.maxHeight = "calc(100% - 4.5em)";
   content.style.flexGrow = "1";
 
   const bottomRow = document.createElement("div");

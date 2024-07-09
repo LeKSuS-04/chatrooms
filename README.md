@@ -13,7 +13,9 @@ Dead simple chat application with multiple rooms and tampermonkey client, embedd
 
 ![Chat](./screenshots/chat.png)
 
-![Client demo](./screenshots/embedded-client.gif)
+<p align="center">
+    <img alt="Client demo" src="./screenshots/embedded-client.gif">
+</p>
 
 ## How to set up?
 

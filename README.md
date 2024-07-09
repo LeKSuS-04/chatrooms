@@ -13,7 +13,7 @@ Dead simple chat application with multiple rooms and tampermonkey client, embedd
 
 ![Chat](./screenshots/chat.png)
 
-https://github.com/LeKSuS-04/chatrooms/raw/master/screenshots/embedded-client.mp4
+![Client demo](./screenshots/embedded-client.gif)
 
 ## How to set up?
 

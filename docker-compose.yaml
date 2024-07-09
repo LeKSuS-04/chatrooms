@@ -18,6 +18,8 @@ services:
     image: caddy:2.8
     restart: unless-stopped
     cap_add: [NET_ADMIN]
+    env_file:
+      - .envrc
     ports:
       - 80:80
       - 443:443

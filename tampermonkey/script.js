@@ -35,6 +35,7 @@
   container.style.borderRadius = "10px";
   container.style.userSelect = "none";
   container.style.boxShadow = "0 0 2px rgba(0, 0, 0, 0.3)";
+  container.style.zIndex = '999999999999';
 
   const dragHandle = document.createElement("div");
   dragHandle.id = "draggable-handle";

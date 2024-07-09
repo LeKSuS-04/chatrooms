@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      v0.0.1
 // @description  Polls for messages in specified room
-// @author       LeKSuS
+// @author       https://github.com/LeKSuS-04
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=mephi.ru
 // @require      https://code.jquery.com/jquery-3.7.1.js
@@ -16,7 +16,7 @@
 (function () {
   "use strict";
 
-  const chatRoomsBackend = "https://rooms.leksus.net";
+  const chatRoomsBackend = "https://chatrooms.example.ru";
 
   const jqueryUiCss = GM_getResourceText("JQUERY_UI_CSS");
   GM_addStyle(jqueryUiCss);
